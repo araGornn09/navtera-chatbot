@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NAVTERA - Yonetim Paneli</title>
+    <style>
+        body { font-family: Arial, sans-serif; background-color: #f8f9fa; padding: 20px; }
+        table { width: 100%; border-collapse: collapse; background: white; margin-top: 20px; }
+        th, td { padding: 12px; border: 1px solid #dee2e6; text-align: left; }
+        th { background-color: #343a40; color: white; }
+    </style>
+</head>
+<body>
+    <h2>NAVTERA Musteri Talepleri (Leads)</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Isim</th>
+                <th>Telefon</th>
+                <th>Liman</th>
+                <th>Tarih</th>
+                <th>Kayit Tarihi</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for lead in leads %}
+            <tr>
+                <td>{{ lead.id }}</td>
+                <td>{{ lead.name }}</td>
+                <td>{{ lead.phone }}</td>
+                <td>{{ lead.port }}</td>
+                <td>{{ lead.date }}</td>
+                <td>{{ lead.created_at }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>

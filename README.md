@@ -1,26 +1,19 @@
-# SmartLead AI - Navtera Asistanı
+# Navtera - Yapay Zeka Destekli Yat Kiralama Platformu
 
-Bu proje, ziyaretçilerle yapay zekâ üzerinden akıllı sohbet eden ve potansiyel müşteri (lead) bilgilerini toplayıp yöneten modüler bir Flask ve Wix Studio web uygulamasıdır.
+Navtera, kullanıcıların chatbot ile sohbet ederek yat kiralama süreçlerini yönetebildiği, yapay zeka entegreli modern bir web platformudur.
 
-## 🏗️ Mimari ve Katmanlar (Separation of Concerns)
-Proje, her dosyanın tek bir sorumluluğu olacağı şekilde katmanlı bir mimariyle geliştirilmiştir:
-- **`run.py`**: Uygulamayı başlatan ana giriş noktası.
-- **`config.py`**: Ortam değişkenlerini (`.env`) ve yapılandırmaları yöneten katman.
-- **`app/database.py`**: SQLite veritabanı bağlantısı ve tablo yönetimi (SQL sorguları yalnızca burada yer alır).
-- **`app/services/ai_service.py`**: Groq AI (Llama 3) entegrasyonunu ve yapay zekâ çağrılarını izole eden servis katmanı.
-- **`app/routes.py`**: HTTP isteklerini karşılayan Blueprint tabanlı rota kontrolcüsü.
+## 🚀 Kullanılan Teknolojiler
+- **Backend:** Python, Flask, Gunicorn
+- **Frontend / Arayüz:** Wix Studio (Velo)
+- **Yapay Zeka & Servisler:** Groq AI API, Regex tabanlı akıllı veri yakalama radarı
+- **Hosting:** Render (Cloud Hosting)
 
-## 🛠️ Kullanılan Teknolojiler
-- **Backend:** Python, Flask, Flask-CORS, SQLite, Requests
-- **Yapay Zekâ:** Groq API (`llama-3.1-8b-instant`)
-- **Frontend & Arayüz:** Wix Studio, Velo (JavaScript)
-- **Yayınlama (Deployment):** GitHub, Render
+## 📌 Projenin Amacı ve Çalışma Mantığı
+1. Müşteri Wix üzerindeki chatbot ile sohbet ederken adını, telefonunu, gitmek istediği limanı ve kiralama tarihini mesajına yazar.
+2. Flask tabanlı backend sunucusu mesajı analiz eder, akıllı radarlar sayesinde bilgileri cımbızlar ve veritabanına kaydeder.
+3. Wix Studio Dashboard paneli, `/api/leads` uç noktası üzerinden bu verileri canlı olarak çekip şık bir repeater (liste) yapısında görüntüler.
 
-## 🚀 Kurulum ve Çalıştırma (Yerel Ortam)
-
-Projeyi yerel makinenizde çalıştırmak için şu adımları izleyin:
-
-1. **Depoyu klonlayın:**
-   ```bash
-   git clone <repo-url>
-   cd smartlead-ai
+## ⚙️ Nasıl Çalıştırılır?
+1. Repoyu klonlayın: `git clone <repo-url>`
+2. Gerekli kütüphaneleri yükleyin: `pip install -r requirements.txt`
+3. Projeyi yerel ortamda başlatın: `python run.py`

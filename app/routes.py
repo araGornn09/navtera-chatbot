@@ -43,3 +43,9 @@ def add_lead():
         return jsonify({'status': 'success', 'message': 'Kayıt başarıyla oluşturuldu.'})
     
     return jsonify({'status': 'error', 'message': 'Eksik bilgi gönderildi.'}), 400
+
+@main.route('/api/leads', methods=['GET'])
+def api_get_leads():
+    """Wix'in verileri JSON olarak çekeceği endpoint"""
+    leads = get_all_leads()
+    return jsonify({"leads": leads})

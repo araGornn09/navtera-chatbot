@@ -44,8 +44,8 @@ def add_lead():
     
     return jsonify({'status': 'error', 'message': 'Eksik bilgi gönderildi.'}), 400
 
-@main.route('/api/leads', methods=['GET'])
-def api_get_leads():
-    """Wix'in verileri JSON olarak çekeceği endpoint"""
-    leads = get_all_leads()
-    return jsonify({"leads": leads})
+@main.route('/api/test-ekle', methods=['GET'])
+def test_veri_ekle():
+    """Tıklandığında veritabanına zorla kayıt ekleyen sihirli link"""
+    save_lead("Arda Bayrakgil", "05551112233", "Bot Testi", "18-09-2026")
+    return "Harika! Test kaydi veritabanina eklendi. Simdi Wix'e gecip onizleme yapabilirsin!"

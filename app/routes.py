@@ -47,5 +47,13 @@ def add_lead():
 @main.route('/api/leads', methods=['GET'])
 def api_get_leads():
     """Wix'in verileri JSON olarak çekeceği endpoint"""
-    leads = get_all_leads()
-    return jsonify({"leads": leads})
+    # Wix repeater'ı test etmek için sahte veri (_id alanı Wix için zorunludur!)
+    fake_leads = [
+        {
+            "_id": "1", 
+            "isim": "Arda Test", 
+            "telefon": "05554443322", 
+            "mesaj": "Kanka sistem harika calisiyor, kutular geldi!"
+        }
+    ]
+    return jsonify({"leads": fake_leads})

@@ -47,5 +47,5 @@ def add_lead():
 @main.route('/api/leads', methods=['GET'])
 def api_get_leads():
     """Wix'in verileri JSON olarak çekeceği endpoint"""
-    leads = get_all_leads() # Artık veritabanından, Wix formatında çekiyor
+    leads = get_all_leads()
     return jsonify({"leads": leads})

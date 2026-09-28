@@ -2,22 +2,6 @@ import os
 from groq import Groq
 from config import Config
 
-def get_active_model(client):
-    """Groq üzerindeki aktif modelleri sorgulayıp çalışan ilk modeli seçer."""
-    try:
-        models_list = client.models.list()
-        if models_list and models_list.data:
-            active_ids = [m.id for m in models_list.data]
-            # Öncelikli aktif modeller
-            preferred_models = ["openai/gpt-oss-20b", "openai/gpt-oss-120b", "qwen/qwen3.6-27b"]
-            for model_id in preferred_models:
-                if model_id in active_ids:
-                    return model_id
-            return active_ids[0]
-    except Exception:
-        pass
-    return "openai/gpt-oss-20b"
-
 def ask_groq_ai(user_message):
     """Groq AI resmi kütüphanesini kullanarak cevap alır."""
     api_key = Config.GROQ_API_KEY
@@ -26,7 +10,7 @@ def ask_groq_ai(user_message):
 
     try:
         client = Groq(api_key=api_key)
-        model_to_use = get_active_model(client)
+        model_to_use = os.getenv("GROQ_MODEL", "openai/gpt-oss-120b")
         
         system_prompt = (
             "Sen NAVTERA adında lüks bir yat kiralama firmasının yardımsever asistanısın. "

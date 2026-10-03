@@ -70,7 +70,10 @@ def chat():
     # -----------------------------------------------------
 
     # AI Servisine mesaji gonderip cevap aliyoruz
-    bot_response = ask_groq_ai(user_message)
+    history = data.get('history', [])
+    if not isinstance(history, list):
+        history = []
+    bot_response = ask_groq_ai(user_message, history)
     return jsonify({'response': bot_response})
 
 @main.route('/api/lead', methods=['POST'])
